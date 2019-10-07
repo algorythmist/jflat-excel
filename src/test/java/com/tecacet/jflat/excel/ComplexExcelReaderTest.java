@@ -11,7 +11,7 @@ import com.tecacet.jflat.FlatFileReader;
 public class ComplexExcelReaderTest {
 
     @Test
-    void testComplexSpreadsheet() throws IOException {
+    void readSpreadsheetWithFormulas() throws IOException {
         String[] header = {"PX Code", "Date", "Description", "Start time", "End time", "Duration"};
         String[] properties = {"identifier", "date", "description", "startTime", "endTime", "duration"};
 

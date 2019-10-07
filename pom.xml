@@ -5,6 +5,11 @@
     <artifactId>jflat-excel</artifactId>
     <version>1.1.2-SNAPSHOT</version>
 
+    <name>JFlat Excel Extension</name>
+    <description>
+        A JFlat extension for reading excel files
+    </description>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -110,5 +115,48 @@
 			</plugin>
         </plugins>
     </build>
+
+    <url>https://github.com/algorythmist/jflat-excel/</url>
+    <developers>
+        <developer>
+            <name>Dimitri Papaioannou</name>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>TecAceT</name>
+        <url>http://www.tecacet.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/algorythmist/jflat-excel</url>
+        <connection>scm:git:git@github.com:algorythmist/jflat-excel.git</connection>
+        <developerConnection>scm:git:git@github.com:algorythmist/jflat-excel.git</developerConnection>
+    </scm>
+
+    <ciManagement>
+        <system>TravisCI</system>
+        <url>https://travis-ci.org/algorythmist/jflat-excel</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/algorythmist/jflat-excel/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

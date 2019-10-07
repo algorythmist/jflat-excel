@@ -54,10 +54,8 @@ public class CellMapper {
 	}
 
 	private String evaluateFormula(Cell cell) {
-		// TODO is this slow?
 		FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
 		CellValue cellValue = evaluator.evaluate(cell);
-		// TODO this is just like the other switch..
 		switch (cellValue.getCellType()) {
 		case BOOLEAN:
 			boolean b = cellValue.getBooleanValue();

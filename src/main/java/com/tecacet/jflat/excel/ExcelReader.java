@@ -44,8 +44,7 @@ public class ExcelReader<T> extends AbstractFlatFileReader<T> {
 
     @Override
     public Stream<T> readAsStream(Reader reader) throws UnsupportedOperationException {
-        //TODO: is it possible?
-        throw new UnsupportedOperationException("Method not supported for excel");
+        throw new UnsupportedOperationException("Read to stream is not supported for excel");
     }
 
     @Override
