@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import com.tecacet.jflat.BeanMapper;
 import com.tecacet.jflat.FlatFileReader;
-import com.tecacet.jflat.impl.HeaderBeanMapper;
 
 public class ComplexExcelReaderTest {
 
@@ -17,8 +15,7 @@ public class ComplexExcelReaderTest {
         String[] header = {"PX Code", "Date", "Description", "Start time", "End time", "Duration"};
         String[] properties = {"identifier", "date", "description", "startTime", "endTime", "duration"};
 
-        BeanMapper<TimeEntry> beanMapper = new HeaderBeanMapper<>(TimeEntry.class, header, properties);
-        FlatFileReader<TimeEntry> reader = new ExcelReader<>(beanMapper);
+        FlatFileReader<TimeEntry> reader = ExcelReader.createWithHeaderMapping(TimeEntry.class, header, properties);
 
         List<TimeEntry> entries = reader.readAll("Timesheet.xls");
         TimeEntry entry = entries.get(0);

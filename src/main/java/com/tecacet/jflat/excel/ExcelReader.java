@@ -18,14 +18,16 @@ import com.tecacet.jflat.converters.LocalTimeConverter;
 import com.tecacet.jflat.impl.AbstractFlatFileReader;
 import com.tecacet.jflat.impl.GenericBeanMapper;
 import com.tecacet.jflat.impl.HeaderBeanMapper;
+import com.tecacet.jflat.impl.IndexBeanMapper;
 
 public class ExcelReader<T> extends AbstractFlatFileReader<T> {
 
-    private final ExcelParser parser = new ExcelParser(true); //TODO: support without header
+    private final ExcelParser parser;
     private final BeanMapper<T> beanMapper;
 
-    public ExcelReader(BeanMapper<T> beanMapper) {
+    public ExcelReader(BeanMapper<T> beanMapper, boolean hasHeader) {
         this.beanMapper = beanMapper;
+        this.parser = new ExcelParser(hasHeader);
         this.registerConverter(LocalDate.class, new LocalDateConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
         this.registerConverter(LocalDateTime.class, new LocalDateTimeConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
         this.registerConverter(LocalTime.class, new LocalTimeConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
@@ -57,7 +59,13 @@ public class ExcelReader<T> extends AbstractFlatFileReader<T> {
     public static <T> ExcelReader<T> createWithHeaderMapping(Class<T> type,
                                                              String[] header,
                                                              String[] properties) {
-        return new ExcelReader<>(new HeaderBeanMapper<>(type, header, properties));
+        return new ExcelReader<>(new HeaderBeanMapper<>(type, header, properties), true);
+    }
+
+    public static <T> ExcelReader<T> createWithIndexMapping(Class<T> type,
+                                                            String[] properties,
+                                                            boolean skipHeaderRow) {
+        return new ExcelReader<>(new IndexBeanMapper<>(type, properties), skipHeaderRow);
     }
 
 }
