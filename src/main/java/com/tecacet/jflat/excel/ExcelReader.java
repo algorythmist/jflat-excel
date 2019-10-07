@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import com.tecacet.jflat.BeanMapper;
@@ -13,6 +14,7 @@ import com.tecacet.jflat.FlatFileReaderCallback;
 import com.tecacet.jflat.RowRecord;
 import com.tecacet.jflat.converters.LocalDateConverter;
 import com.tecacet.jflat.converters.LocalDateTimeConverter;
+import com.tecacet.jflat.converters.LocalTimeConverter;
 import com.tecacet.jflat.impl.AbstractFlatFileReader;
 import com.tecacet.jflat.impl.GenericBeanMapper;
 import com.tecacet.jflat.impl.HeaderBeanMapper;
@@ -26,6 +28,7 @@ public class ExcelReader<T> extends AbstractFlatFileReader<T> {
         this.beanMapper = beanMapper;
         this.registerConverter(LocalDate.class, new LocalDateConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
         this.registerConverter(LocalDateTime.class, new LocalDateTimeConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
+        this.registerConverter(LocalTime.class, new LocalTimeConverter(CellMapper.DEFAULT_DATETIME_FORMAT));
     }
 
     @Override
