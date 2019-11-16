@@ -12,7 +12,7 @@ Read a file with a header:
 
 Read a file without a header by specifying the order of the properties:
 ```java
-ExcelReader<Quote> reader = ExcelReader.createWithIndexMapping(Quote.class,
+ ExcelReader<Quote> reader = ExcelReader.createWithIndexMapping(Quote.class,
                 new String[]{"date", "open", "close", "volume"}, false);
  List<Quote> rows = reader.readAll(filename);
 
